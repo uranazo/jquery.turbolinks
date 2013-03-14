@@ -15,7 +15,11 @@ callbacks = []
 
 # Call each callback in list
 ready = ->
-  callback($) for callback in callbacks
+  for callback in callbacks
+    try
+      callback($)
+    catch e
+      console.log(e)
 
 # Turbolinks ready event
 turbolinksReady = ->
